@@ -4,10 +4,11 @@ const mongoose          = require('mongoose');
 const logger            = require('morgan');
 const path              = require('path');
 const config            = require('./config');
-const authMiddleware    = require('./utils/auth');
 
 // Routes
-const authRoute     = require('./routes/auth.route');
+const authRoute         = require('./routes/auth.route');
+const userRoute         = require("./routes/user.route");
+const authMiddleware    = require("./utils/auth");
 
 // db connection
 mongoose.Promise = global.Promise;
@@ -26,7 +27,7 @@ app.use(express.urlencoded({ extended : false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/api/auth", authRoute);
-
+app.use("/api/users", authMiddleware, userRoute);
 const port = process.env.PORT || 8000;
 app.listen(port, (err) => {
     if(err) return console.log(err.message);

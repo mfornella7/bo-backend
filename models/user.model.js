@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
     currency: {
         type: Number,
         default: 1
+    },
+    balance: {
+        type: Number,
+        default: 1000
     }
 });
 
