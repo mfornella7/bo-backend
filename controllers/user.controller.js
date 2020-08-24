@@ -45,5 +45,6 @@ async function getUserById(req, res, next, id) {
 
 module.exports = {
     placeBet,
-    getUserById
+    getUserById,
+    depositToBalance
 }
